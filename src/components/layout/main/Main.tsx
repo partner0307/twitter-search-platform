@@ -1,4 +1,4 @@
-import { Box, Toolbar, Paper, Container } from "@mui/material";
+import { Box, Toolbar, Paper, Container, useTheme } from "@mui/material";
 import React, { FC } from "react";
 
 interface MainType {
@@ -6,6 +6,8 @@ interface MainType {
 }
 
 const Main: FC<MainType> = ({ children }) => {
+  const theme = useTheme();
+
   return (
     <Box
       component="main"
@@ -26,13 +28,9 @@ const Main: FC<MainType> = ({ children }) => {
         }}
       >
         <Toolbar />
-        <Container
-          sx={{
-            mt: "",
-          }}
-        >
+        <Box component="div" padding={theme.spacing(2)}>
           {children}
-        </Container>
+        </Box>
       </Paper>
     </Box>
   );
