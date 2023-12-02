@@ -11,15 +11,15 @@ const routers = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: _ROUTERS._HOME,
+        path: _ROUTERS._HOME.path,
         element: <Dashboard />,
       },
       {
-        path: _ROUTERS._FOLLOWER,
+        path: _ROUTERS._FOLLOWER.path,
         element: <Follower />,
       },
       {
-        path: _ROUTERS._CUSTOMER,
+        path: _ROUTERS._CUSTOMER.path,
         element: <>Customer</>,
       },
     ],

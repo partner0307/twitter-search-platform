@@ -1,5 +1,16 @@
-import { Box, Toolbar, Paper, Container, useTheme } from "@mui/material";
+import {
+  Box,
+  Paper,
+  Breadcrumbs,
+  Link,
+  Typography,
+  Toolbar,
+  useTheme,
+} from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 interface MainType {
   children: React.ReactNode;
@@ -7,6 +18,7 @@ interface MainType {
 
 const Main: FC<MainType> = ({ children }) => {
   const theme = useTheme();
+  const { title } = useSelector((state: RootState) => state.page);
 
   return (
     <Box
@@ -24,11 +36,19 @@ const Main: FC<MainType> = ({ children }) => {
     >
       <Paper
         sx={{
+          paddingTop: theme.spacing(5),
           minHeight: "100%",
         }}
       >
-        <Toolbar />
-        <Box component="div" padding={theme.spacing(2)}>
+        <Toolbar sx={{ minWidth: theme.spacing(3) }}>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link underline="hover" color="inherit" href="/">
+              <HomeIcon />
+            </Link>
+            <Typography color="text.primary">{title}</Typography>
+          </Breadcrumbs>
+        </Toolbar>
+        <Box component="div" paddingX={theme.spacing(2.5)}>
           {children}
         </Box>
       </Paper>

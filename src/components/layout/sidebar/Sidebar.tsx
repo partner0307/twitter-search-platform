@@ -1,6 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
+import MuiDrawer, { DrawerProps as MuiDrawerProps } from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -17,9 +17,13 @@ import { useNavigate } from "react-router-dom";
 
 const drawerWidth: number = 240;
 
+interface DrawerProps extends MuiDrawerProps {
+  open?: boolean;
+}
+
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+})<DrawerProps>(({ theme, open }) => ({
   "& .MuiDrawer-paper": {
     position: "relative",
     whiteSpace: "nowrap",
@@ -43,7 +47,7 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-export default function Dashboard() {
+export default function Sidebar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { visible } = useAppSelector((state: RootState) => state.page);
@@ -52,6 +56,7 @@ export default function Dashboard() {
     dispatch(pageActions.setTitle(title));
     navigate(url);
   };
+  console.log(visible);
 
   return (
     <Drawer variant="permanent" open={visible}>
