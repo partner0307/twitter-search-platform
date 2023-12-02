@@ -1,11 +1,12 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Badge, IconButton, Toolbar, Typography } from "@mui/material";
+import { Badge, IconButton, Toolbar, Typography, Avatar } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { Menu, AccountCircle } from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { RootState } from "@/redux/store";
 import { pageActions } from "@/redux/page";
+import AvatarImage from "@/assets/img/avatar.png";
 
 const drawerWidth: number = 240;
 
@@ -57,7 +58,7 @@ const Header = () => {
         </Typography>
         <IconButton color="inherit">
           <Badge badgeContent={4} color="secondary">
-            <AccountCircle />
+            <Avatar src={AvatarImage} alt="" sx={{ width: 32, height: 32 }} />
           </Badge>
         </IconButton>
       </Toolbar>
